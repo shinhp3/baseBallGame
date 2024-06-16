@@ -72,7 +72,7 @@ func compare(playerNum: [Int], randomComputerResult: [Int]) -> (strike: Int, bal
     
     
 while true{
-    var playerNum = player()
+    let playerNum = player()
     if playerNum.count == 3 {
         let result = compare(playerNum: playerNum, randomComputerResult: randomComputerResult)
         print("\(result.strike)스트라이크 \(result.ball)볼 입니다.")
