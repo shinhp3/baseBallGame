@@ -35,17 +35,8 @@ func player() -> [Int] {
             for seprateNum in stringInput{
                 if let seprate = Int(String(seprateNum)){
                     playerResult.append(seprate)
-                } 
-//                else if playerResult[0] == playerResult[1] ||
-//                            playerResult[0] == playerResult[2] ||
-//                            playerResult[1] == playerResult[2] {
-//                    print("숫자가 중복되었습니다.")
-//                    playerResult = []
-//                }
+                }
             }
-        } else if stringInput.count > 3 {
-            print("숫자 3개를 입력하세요")
-            playerResult = []
         }
     }
     return playerResult
@@ -67,19 +58,28 @@ func compare(playerNum: [Int], randomComputerResult: [Int]) -> (strike: Int, bal
     return (strike, ball)
 }
 
-
-
     
-    
+//게임 플레이
 while true{
     let playerNum = player()
-    if playerNum.count == 3 {
+    if playerNum.count == 3 && playerNum.first != 0 &&
+        playerNum[0] != playerNum[1] &&
+        playerNum[0] != playerNum[2] &&
+        playerNum[1] != playerNum[2] {
         let result = compare(playerNum: playerNum, randomComputerResult: randomComputerResult)
         print("\(result.strike)스트라이크 \(result.ball)볼 입니다.")
         if result.strike == 3{
             print("정답입니다.")
             break
         }
+    }else if playerNum.count < 3 {
+        print("숫자를 3개 입력하세요")
+    }else if playerNum.first == 0 {
+        print("0이 제일 앞에 있습니다.")
+    }else if playerNum[0] == playerNum[1] ||
+            playerNum[0] == playerNum[2] ||
+            playerNum[1] == playerNum[2] {
+                print("숫자가 중복되었습니다.")
     }
 }
 
